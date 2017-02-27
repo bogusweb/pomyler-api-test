@@ -1,0 +1,30 @@
+<dom-module id="demo-posts">
+
+    <template>
+        <h1>Demo post api</h1>
+
+        <template is="dom-repeat" items="[[posts]]">
+            <span>{{item.title}}</span><br />
+        </template>
+
+        <iron-ajax
+                auto
+                url="https://jsonplaceholder.typicode.com/posts"
+                handle-as="json"
+                on-response="handleResponse"></iron-ajax>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'demo-posts',
+            properties: {
+                posts: Array
+            },
+            handleResponse: function(data) {
+                this.posts = data.detail.response;
+            }
+        });
+    </script>
+
+</dom-module>

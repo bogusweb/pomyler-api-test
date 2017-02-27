@@ -1,0 +1,37 @@
+<dom-module id="photos-list">
+
+    <template>
+        <h1>Photos list:</h1>
+
+        <ul>
+        <template is="dom-repeat" items="[[gallery]]">
+            <li>
+                {{item.title}}
+                <img src$="{{item.thumbnailUrl}}" alt="" />
+            </li>
+        </template>
+        </ul>
+
+
+        <iron-ajax
+                auto
+                url="https://jsonplaceholder.typicode.com/photos"
+                params='{"albumId":"1"}'
+                handle-as="json"
+                on-response="handleResponse"
+        ></iron-ajax>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'photos-list',
+            properties: {
+                gallery: Array
+            },
+            handleResponse: function(data) {
+                this.gallery = data.detail.response;
+            }
+        });
+    </script>
+
+</dom-module>

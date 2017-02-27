@@ -1,0 +1,21 @@
+{
+  "name": "pomyler-api-test",
+  "homepage": "https://github.com/bogusweb/pomyler-api-test",
+  "authors": [
+    "bogusweb <boguswebpl@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-ajax": "PolymerElements/iron-ajax#^1.4.3"
+  }
+}

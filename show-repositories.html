@@ -1,0 +1,31 @@
+<dom-module id="show-repositories">
+    <template>
+        <h1>Repositories</h1>
+
+        <ul>
+        <template is="dom-repeat" items="[[repos]]">
+           <li> <span>{{item.name}}</span></li>
+        </template>
+        </ul>
+
+        <iron-ajax
+                auto
+                url="https://api.github.com/users/bogusweb/repos"
+                params='{"type":"all"}'
+                handle-as="json"
+                on-response="handleResponse"></iron-ajax>
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'show-repositories',
+            properties: {
+                repos: Array
+            },
+            handleResponse: function(data) {
+                this.repos = data.detail.response;
+            }
+        });
+    </script>
+</dom-module>
